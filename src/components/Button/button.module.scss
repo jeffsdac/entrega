@@ -1,0 +1,15 @@
+@use '../../styles/sass/variables.scss' as v;
+
+.button{
+    width: 100%;
+
+    border-radius: 11px;
+    padding: 16px ;
+    border: none;
+
+    background-color: v.$blue;
+    color: white;
+
+    font-weight: bold;
+    
+}

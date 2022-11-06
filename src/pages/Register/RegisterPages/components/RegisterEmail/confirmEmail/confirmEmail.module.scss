@@ -1,0 +1,28 @@
+@use '../../../../../../styles/sass/variables.scss' as v;
+
+.register_form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+
+    width: 400px;
+    height: 100%;
+
+    padding: 10px;
+    .inputs{
+        display: flex;
+        justify-content: space-between;
+        
+
+        width: 100%;
+    }
+
+    .resend_email{
+        color: v.$blue;
+        font-weight: bold;
+
+        cursor: pointer;
+    }
+}

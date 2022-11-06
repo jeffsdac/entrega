@@ -1,0 +1,21 @@
+@use '../../styles/sass/variables.scss' as v;
+
+.input_number{
+    width: 64px;
+    height: 64px;
+
+    padding: 20px;
+
+    border: 2px solid v.$gray;
+    border-radius: 10px;
+
+    appearance: textfield;
+    text-align: center;
+    &:focus{
+        outline: none;
+    }
+
+    &::placeholder{
+        color: v.$gray;
+    }
+}
