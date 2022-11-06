@@ -1,0 +1,10 @@
+.form_location{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    .two_inputs{
+        display: flex;
+        width: 100%;
+        gap: 16px;
+    }
+}

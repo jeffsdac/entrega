@@ -16,3 +16,14 @@
         color: v.$gray;
     }
 }
+
+.not_editable{
+    background-color: v.$light-gray;
+    
+    
+    cursor: not-allowed;
+    &::placeholder{
+        color: v.$black;
+        font-weight: bold;
+    }
+}

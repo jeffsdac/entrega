@@ -11,6 +11,12 @@
     height: 100%;
 
     padding: 10px;
+
+    .text_form{
+        p{
+            color: v.$gray;
+        }
+    }
     .inputs{
         display: flex;
         justify-content: space-between;
