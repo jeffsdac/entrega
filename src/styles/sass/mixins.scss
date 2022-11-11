@@ -1,0 +1,31 @@
+@use './variables.scss' as v;
+
+@mixin mobile {
+    @media (max-width: v.$mobile) { @content; }
+}
+
+@mixin tablet {
+    @media (min-width: v.$mobile) and (max-width: v.$desktop) { @content; }
+}
+
+@mixin desktop {
+    @media (min-width: v.$desktop) { @content; }
+}
+
+@mixin media($keys...) {
+    @each $key in $keys {
+        @if ($key == mobile) {
+            @include mobile {
+                @content
+            }
+        } @else if ($key == tablet) {
+            @include tablet {
+                @content
+            }
+        } @else if ($key == desktop) {
+            @include desktop {
+                @content
+            }
+        }
+    }
+}

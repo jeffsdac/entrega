@@ -1,3 +1,5 @@
+@import '../../../styles/sass/mixins.scss';
+
 .form_container{
     display: flex;
     justify-content: center;
@@ -5,4 +7,9 @@
     width: 60%;
 
     text-align: center;
+
+    @include media (mobile){
+        width: 100%;
+        padding: 8px;
+    }
 }

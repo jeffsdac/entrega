@@ -1,7 +1,19 @@
+@use '../../../../../../../styles/sass/variables.scss' as v;
+
 .form_location{
     display: flex;
     flex-direction: column;
     gap: 24px;
+
+    .select{
+        background-color: white;
+        
+        border: solid 3px v.$light-gray;
+        border-radius: 10px;
+
+        padding: 10px;
+    }
+
     .two_inputs{
         display: flex;
         width: 100%;

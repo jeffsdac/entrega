@@ -1,0 +1,90 @@
+@use '../../styles/sass/variables.scss' as v;
+@import '../../styles/sass/mixins.scss';
+
+.calendar_container{
+    width: 100%;
+    
+    .select_mounth{
+        padding: 5px;
+
+        border: none;
+        
+        background: none;
+        color: v.$black;
+    
+        font-size: 15px;
+        font-weight: bold;
+
+        margin-bottom: 24px;
+    }
+
+    .table_calender{
+        width: 100%;
+
+        border-collapse: collapse;
+        th{
+            width: calc(100% / 7);
+        }
+        .day_container{
+            display: flex;
+            justify-content: flex-start;
+            height: 140px;
+
+            padding: 10px;
+
+            border: 1px solid v.$light-gray;
+
+            font-size: 14px;
+            .is_comitted{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+                width: 20px;
+                height: 20px;
+
+                padding: 15px;
+
+                border-radius: 100%;
+
+                background-color: v.$blue;
+                color: white;
+
+                box-shadow: 0px 0px 10px rgba(13, 15, 69, 0.2);
+                
+                cursor: pointer;
+                
+                &:hover{
+                    transform: scale(1.2);
+                    transition: transform 0.3s;
+                }
+            }
+        }
+        tr:first-child th:first-child .day_container{
+            border-top-left-radius: 20px;
+        }
+        tr:first-child th:last-child .day_container{
+            border-top-right-radius: 20px;
+        }
+        tr:last-child th:first-child .day_container{
+            border-bottom-left-radius: 20px;
+        }
+        tr:last-child th:last-child .day_container{
+            border-bottom-right-radius: 20px;
+        }
+    }
+
+    @include media(mobile){
+        .table_calender{
+            .day_container{
+                height: 70px;
+                font-size: 12px;
+                .is_comitted{
+                    
+                    font-size: 10px;
+                    padding: 5px;
+                }
+            }
+        }
+    }
+}

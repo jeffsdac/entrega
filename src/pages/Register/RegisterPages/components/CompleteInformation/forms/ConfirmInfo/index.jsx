@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import api from '../../../../../../../services/api';
 
 import Styles from './confirmInfo.module.scss'
 import Progress from '../../components/Progress';
@@ -7,27 +9,38 @@ import Button from '../../../../../../../components/Button';
 
 function ConfirmInfo() {
     const [password, setPassword] = useState({
-        password: '',
-        confirmPassword: '' 
+        senha: '',
+        confirmSenha: '' 
     })
     const email = JSON.parse(sessionStorage.getItem("register-usuer")).email
+    const navigation = useNavigate('')
 
     const handleChange = (e) =>{
         setPassword({...password, [e.target.id]: e.target.value})
     }
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = async (e) =>{
         e.preventDefault()
-        if(password.password === '' || password.confirmPassword === ''){
+        if(password.senha === '' || password.confirmSenha === ''){
             alert("Preencha todos os campos!")
-        }else if(password.password !== password.confirmPassword){
+        }else if(password.senha !== password.confirmSenha){
             alert("As senhas não estão iguais")
-        }else{
-            const session = Object.assign(JSON.parse(sessionStorage.getItem("register-usuer")), {password: password.password})
-            sessionStorage.setItem("register-usuer", JSON.stringify(session))
+        }else if(password.senha.length < 9){
+            alert("A Senha é muito fraca")
+        }
+        else{
+            const session = Object.assign(JSON.parse(sessionStorage.getItem("register-usuer")), {senha: password.senha})
+            sessionStorage.setItem("register-user", JSON.stringify(session))
+
+            await api
+                .post('/cliente', session)
+                .then(resp =>{
+                    sessionStorage.removeItem("register-usuer")
+                    navigation('/login')
+                })
+                .catch(err => console.log(err))
 
             console.log(sessionStorage.getItem("register-usuer"))
-            // navigation('../confirmInformations')
         }
     }
 
@@ -36,8 +49,8 @@ function ConfirmInfo() {
             <Progress />
             <form className={Styles.form_confirm} onSubmit={e => handleSubmit(e)}>
                 <Input type='text' isEditable={false} placeholder={email}/>
-                <Input id='password' type='password' placeholder='Crie uma Senha' value={password.password} onChange={e => handleChange(e)}/>
-                <Input id='confirmPassword' type='password' placeholder='Confirme a Senha digitada' value={password.confirmPassword} onChange={e => handleChange(e)}/>
+                <Input id='senha' type='password' placeholder='Crie uma Senha' value={password.senha} onChange={e => handleChange(e)}/>
+                <Input id='confirmSenha' type='password' placeholder='Confirme a Senha digitada' value={password.confirmSenha} onChange={e => handleChange(e)}/>
                 <Button placeholder='Cadastrar'></Button>
             </form>
         </>

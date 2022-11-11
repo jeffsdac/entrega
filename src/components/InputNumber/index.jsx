@@ -11,7 +11,6 @@ const InputNumber = ({maxLength = '', value = 0, onChange = () =>{}, placeholder
         value={value}
         onChange={onChange}
         placeholder= {placeholder}
-        pattern="[0-9]"
         id={id}
         />
     );

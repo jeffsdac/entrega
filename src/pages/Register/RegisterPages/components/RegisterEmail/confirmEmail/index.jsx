@@ -32,7 +32,6 @@ function ConfirmEmail() {
         e.preventDefault()
         const cod = JSON.parse(session).confirmCod
         const email = JSON.parse(session).email
-        console.log(session)
         if(numbers.join('') === cod){
             const user = {'email': email}
             sessionStorage.setItem("register-usuer", JSON.stringify(user))
@@ -41,13 +40,14 @@ function ConfirmEmail() {
         }else{
             alert("O Codigo esta errado!")
         }
+        console.log(sessionStorage.getItem('email-valido'))
     }
 
     return (
         <>
             <form className={Styles.register_form} action="" onSubmit={e => handleSubmit(e)}>
                 <div className={Styles.text_form}>
-                    <h2>Coloque o codigo de 4 digitos que enviamos para:</h2>
+                    <h2>Coloque o código de 4 dígitos que enviamos para:</h2>
                     <p>{JSON.parse(session).email}</p>
                 </div>
                 <div className={Styles.inputs} ref={divRef}>
@@ -57,7 +57,7 @@ function ConfirmEmail() {
                     <InputNumber id='numberInputId3'type='number' placeholder='0' maxLength='1' value={numbers[3]} onChange={e => handleChange(e)}/>
                 </div>
                 <Button placeholder='Enviar'/>
-                <span className={Styles.resend_email}>Não recebi meu codigo</span>
+                <span className={Styles.resend_email}>Não recebi meu código</span>
             </form>
         </>
     );

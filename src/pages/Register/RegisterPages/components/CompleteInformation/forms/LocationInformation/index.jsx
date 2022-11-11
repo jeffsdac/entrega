@@ -8,24 +8,31 @@ import Button from '../../../../../../../components/Button';
 
 function LocationInformation() {
     const [location, setLocation] = useState({
-        cep: '',
-        numero: '',
-        complemento: '',
-        cidade: '',
         bairro: '',
+        cidade: '',
+        complemento: '',
+        estado: '',  
+        logradouro: '',
+        numero: '',
     }) 
+    const estados = ['AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MS','MT','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO',]
     const navigation = useNavigate('')
 
     const handleChange = (e) =>{
-        setLocation({...location, [e.target.id]: e.target.value})
+        if(e.target.id === 'numero'){
+            let number = e.target.value.replace(/\D/g, '');
+            setLocation({...location, [e.target.id]: number !== '' ? parseInt(number) : number})
+        }else{
+            setLocation({...location, [e.target.id]: e.target.value})
+        }
     }
 
     const handleSubmit = (e) =>{
         e.preventDefault()
-        if(location.cep === '' || location.numero === '' || location.complemento === '' || location.cidade === '' || location.bairro === ''){
+        if(location.numero === '' || location.estado === ''||location.complemento === '' || location.cidade === '' || location.bairro === '' || location.logradouro === ''){
             alert("Preencha todos os campos!")
         }else{
-            const session = Object.assign(JSON.parse(sessionStorage.getItem("register-usuer")), location)
+            const session = Object.assign(JSON.parse(sessionStorage.getItem("register-usuer")), {"endereco": location})
             sessionStorage.setItem("register-usuer", JSON.stringify(session))
 
             navigation('../confirmInformations')
@@ -36,7 +43,14 @@ function LocationInformation() {
         <>
             <Progress/>
             <form onSubmit={e => handleSubmit(e)} className={Styles.form_location}>
-                <Input id='cep' type='text' placeholder='CEP' value = {location.cep} onChange = { e => handleChange(e)}/>
+                <Input id='logradouro' type='text' placeholder='Logradouro' value = {location.logradouro} onChange = { e => handleChange(e)}/>
+                <select className={Styles.select} id='estado' name="" value = {location.estado} onChange = { e => handleChange(e)}>
+                    <optgroup>
+                        {estados.map((estado) =>(
+                            <option value={estado}>{estado}</option>
+                        ))}
+                    </optgroup>
+                </select>
                 <div className={Styles.two_inputs}>
                     <Input id='numero' type='text' placeholder='Numero' value = {location.numero} onChange = { e => handleChange(e)}/>
                     <Input id='complemento' type='text' placeholder='Complemento' value = {location.complemento} onChange = { e => handleChange(e)}/>

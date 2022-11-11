@@ -43,7 +43,7 @@ function RegisterEmail() {
     return (
         <>
             <form className={Styles.register_form} action="" onSubmit={e => handleSubmit(e)}>
-                <h2>Informe o seu Email para continuar</h2>
+                <h2>Informe o seu email para continuar</h2>
                 <Input type='email' placeholder='Email' value = {email} onChange = { e => setEmail(e.target.value)}/>
                 <Button placeholder='Enviar'/>
             </form>

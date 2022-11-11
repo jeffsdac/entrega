@@ -1,0 +1,52 @@
+@use '../../../styles/sass/variables.scss' as v;
+@import '../../../styles/sass/mixins.scss';
+
+.form_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 60%;
+
+    text-align: center;
+
+    .title{
+        margin-bottom: 16px;
+        color: v.$black;
+    }
+
+    .form_content{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        width: 360px;
+
+        .two_inputs{
+            display: flex;
+            gap: 8px;
+
+            & :first-child{
+                width: 20%;
+            }
+        }
+
+        textarea{
+            width: 100%;
+            max-width: 100%;
+
+            padding: 10px;
+
+            border: 3px solid v.$light-gray;
+            border-radius: 10px;
+            &[placeholder]{
+                color: v.$gray;
+                font-weight: bold;
+            }
+        }
+    }
+    @include media (mobile){
+        width: 100%;
+        padding: 8px;
+    }
+}

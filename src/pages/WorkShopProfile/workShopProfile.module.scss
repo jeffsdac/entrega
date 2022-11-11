@@ -1,0 +1,17 @@
+@import '../../styles/sass/mixins.scss';
+
+.workSpace_container{
+    display: flex;
+
+    max-width: 100%;
+    width: 100%;
+
+    background-color: #F7F9FB;
+    @include media(tablet, mobile){
+        align-items: center;
+        flex-direction: column;
+        gap: 24px;
+
+        padding: 10px;
+    }
+}

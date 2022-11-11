@@ -1,3 +1,5 @@
+@use '../../../../../../../styles/sass/variables.scss' as v;
+
 .personalInformation_form{
     display: flex;
     flex-direction: column;
@@ -9,5 +11,14 @@
     .two_inputs{
         display: flex;
         gap: 16px;
+
+        .select{
+            background-color: white;
+            
+            border: solid 3px v.$light-gray;
+            border-radius: 10px;
+
+            padding: 10px;
+        }
     }
 }

@@ -1,0 +1,66 @@
+@use '../../styles/sass/variables.scss' as v;
+
+.modal_container{
+
+    position: relative;
+    
+    width: 500px;
+    height: 280px;
+    
+    margin: auto;
+    padding: 30px;
+    
+    border: v.$light-gray solid 1px;
+    border-radius: 20px;
+    
+    box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.1);
+    &[open]{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .close_button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    
+        width: 20px;
+        height: 20px;
+    
+        padding: 10px;
+    
+        background: none;
+        color: #9B1E1E;
+        
+        border: none;
+        border-radius: 100%;
+        
+        font-weight: bold;
+    }
+    
+    .delet_commitment{
+        padding: 10px 10px;
+        
+        border: solid 3px #ff6363;
+        border-radius: 10px;
+        
+        background-color: white;
+        color: #ff6363;
+        
+        font-weight: bold;
+        font-size: 16px;
+        
+        transition: 0.4s;
+        &:hover{
+            background-color: #ff6363;
+            color: white;
+
+            transition: 0.4s;
+        }
+    }
+}
